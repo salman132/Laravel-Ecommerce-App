@@ -18,7 +18,7 @@
                     <div class="col-lg-12">
                         <div class="order">
                             <h2 class="h1 order-title text-center">Your Order</h2>
-                            <form action="#" method="post" class="cart-main">
+                            <div class="cart-main">
                                 <table class="shop_table cart">
                                     <thead class="cart-product-wrap-title-main">
                                     <tr>
@@ -135,7 +135,7 @@
                                     </div>
                                 </div>
 
-                            </form>
+                            </div>
                         </div>
                     </div>
 

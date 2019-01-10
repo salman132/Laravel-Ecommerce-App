@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/normalize.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/grid.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/styles.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 
     <!--Plugins styles-->
@@ -37,8 +38,11 @@
     <div class="container">
 
         <div class="header-content-wrapper">
-
+            <a href="/">Home</a>
             <ul class="nav-add">
+
+
+
                 <li class="cart">
 
                     <a href="#" class="js-cart-animate">
@@ -73,8 +77,8 @@
         <div class="row pt120">
             <div class="col-lg-8 col-lg-offset-2">
                 <div class="heading align-center mb60">
-                    <h4 class="h1 heading-title">Udemy E-commerce tutorial</h4>
-                    <p class="heading-text">Buy books, and we ship to you.
+                    <h4 class="h1 heading-title">Laravel Ecommerce Website</h4>
+                    <p class="heading-text">Buy Products, and we ship to you.
                     </p>
 
                     @include('includes.errors')
@@ -113,6 +117,21 @@
     <script src="{{asset('app/js/velocity.min.js')}}"></script>
     <script src="{{asset('app/js/ScrollMagic.min.js')}}"></script>
     <script src="{{asset('app/js/animation.velocity.min.js')}}"></script>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
+    <script>
+        @if(Session::has('success'))
+        toastr.success('{{Session::get('success')}} ')
+        @endif
+
+        @if(Session::has('danger'))
+        toastr.warning('{{Session::get('danger')}} ')
+        @endif
+    </script>
 
     <!-- ...end JS Script -->
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 use Cart;
+use Mail;
+use Session;
 use Stripe\Stripe;
 use Stripe\Charge;
 
@@ -114,7 +116,7 @@ class CartsController extends Controller
     public function  pay(){
         Stripe::setApiKey("sk_test_slDogfWuH3cwhLVJWAEmqcJV");
 
-        $token = \request()->stripeToken();
+        $token = request()->stripeToken;
 
         $charge =Charge::create([
             'amount' => Cart::getSubTotal() * 100,
@@ -123,6 +125,9 @@ class CartsController extends Controller
             'source' => $token
         ]);
 
-        dd('Thank Tou');
+        Session::flash('success','Purchased successfully.Wait For Our Email');
+        Cart::clear();
+        Mail::to(request()->stripeEmail)->send(new \App\Mail\PurchaseSuccess);
+        return redirect('/');
     }
 }
